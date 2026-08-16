@@ -1,0 +1,10 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  jpa:
+    show-sql: true
+
+  flyway:
+    table: flyway_schema_history

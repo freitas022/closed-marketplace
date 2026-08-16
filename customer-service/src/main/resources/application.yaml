@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: customer-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/marketplace
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    default-schema: customer
+    schemas: customer
+    create-schemas: true
+    table: customer_flyway_schema_history
+    validate-on-migrate: true
