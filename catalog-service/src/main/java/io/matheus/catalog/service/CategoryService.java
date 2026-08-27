@@ -30,4 +30,10 @@ public class CategoryService {
 
         return categoryDTO;
     }
+
+    public CategoryResponseDTO findById(String id) {
+        return categoryRepository.findById(id)
+                .map(categoryMapper::toDto)
+                .orElseThrow(() -> new RuntimeException("Resource not found!"));
+    }
 }

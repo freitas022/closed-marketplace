@@ -19,9 +19,14 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-        public ResponseEntity<CategoryResponseDTO> create(@RequestBody @Valid CategoryRequestDTO req) {
+    public ResponseEntity<CategoryResponseDTO> create(@RequestBody @Valid CategoryRequestDTO req) {
         var category = categoryService.create(req);
         var uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.id()).toUri();
         return ResponseEntity.created(uri).body(category);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryResponseDTO> findById(@PathVariable String id) {
+        return ResponseEntity.ok(categoryService.findById(id));
     }
 }
